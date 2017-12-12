@@ -5,8 +5,8 @@
 
 	<groupId>com.jimo</groupId>
 	<artifactId>auth-jimo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<version>2.0.0</version>
+	<packaging>war</packaging>
 
 	<name>AuthServer</name>
 	<description>auth server</description>
@@ -14,7 +14,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.2.RELEASE</version>
+		<version>1.5.9.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
