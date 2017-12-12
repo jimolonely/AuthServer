@@ -1,20 +1,30 @@
 package com.jimo.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.jimo.model.User;
+import com.jimo.security.JwtUtil;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.ServletException;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
-	@GetMapping("/success")
-	public String success() {
-		return "恭喜您登录成功";
-	}
+    @PostMapping("/login")
+    public String login(User user) throws ServletException {
+        String name = user.getUsername();
+        String pass = user.getPassword();
+        if (!"admin".equals(name)) {
+            throw new ServletException("no such user");
+        }
+        if (!"1234".equals(pass)) {
+            throw new ServletException("wrong password");
+        }
+        return JwtUtil.getToken(name);
+    }
 
-	@GetMapping("/getEmail")
-	public String getEmail() {
-		return "xxxx@qq.com";
-	}
+    @GetMapping("/success")
+    public String success() {
+        return "login success";
+    }
 }
