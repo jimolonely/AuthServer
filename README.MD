@@ -5,4 +5,8 @@
 现在是第二个demo的源码.对应博客:[http://blog.csdn.net/jimo_lonely/article/details/78782262](http://blog.csdn.net/jimo_lonely/article/details/78782262)
 
 **2018-08更新**
-更新到Spring-boot 2.0.4
+
+1. 更新到Spring-boot 2.0.4
+2. WebMvcConfigurerAdapter --> WebMvcConfigurationSupport
+3. 加入了注释
+4. 进行了返回信息封装

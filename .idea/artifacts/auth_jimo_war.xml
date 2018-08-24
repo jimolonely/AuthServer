@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="auth-jimo:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="auth-jimo-2.0.0.war">
+      <element id="artifact" artifact-name="auth-jimo:war exploded" />
+    </root>
+  </artifact>
+</component>
