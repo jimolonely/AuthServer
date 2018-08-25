@@ -1,6 +1,7 @@
 package com.jimo.controller;
 
 import com.jimo.model.User;
+import com.jimo.model.common.Result;
 import com.jimo.security.JwtUtil;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,18 +22,18 @@ public class UserController {
      * @date 2018/8/24 22:45
      */
     @PostMapping("/login")
-    public String login(@RequestBody User user) throws ServletException {
+    public Result login(@RequestBody User user) throws ServletException {
         if (!"admin".equals(user.getUsername())) {
             throw new ServletException("no such user");
         }
         if (!"1234".equals(user.getPassword())) {
             throw new ServletException("wrong password");
         }
-        return JwtUtil.getToken(user.getUsername());
+        return new Result(JwtUtil.getToken(user.getUsername()));
     }
 
     @GetMapping("/success")
-    public String success() {
-        return "login success";
+    public Result success() {
+        return new Result("login success");
     }
 }
