@@ -19,9 +19,9 @@ public class JwtUtil {
      */
     final static String base64EncodedSecretKey = "base64EncodedSecretKey";
     /**
-     * 过期时间,测试使用60秒
+     * 过期时间,测试使用20分钟
      */
-    final static long TOKEN_EXP = 1000 * 60;
+    final static long TOKEN_EXP = 1000 * 60 * 20;
 
     public static String getToken(String userName) {
         return Jwts.builder()
@@ -46,6 +46,20 @@ public class JwtUtil {
             throw new ServletException("token expired");
         } catch (Exception e) {
             throw new ServletException("other token exception");
+        }
+    }
+
+    /**
+     * @func token ok返回true
+     * @author wangpeng
+     * @date 2018/8/27 16:59
+     */
+    public static boolean isTokenOk(String token) {
+        try {
+            Jwts.parser().setSigningKey(base64EncodedSecretKey).parseClaimsJws(token).getBody();
+            return true;
+        } catch (Exception e) {
+            return false;
         }
     }
 }

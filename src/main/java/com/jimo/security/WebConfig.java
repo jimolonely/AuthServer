@@ -15,7 +15,12 @@ public class WebConfig extends WebMvcConfigurationSupport {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         //允许全部请求跨域
-        registry.addMapping("/**");
+        registry.addMapping("/**")
+                .allowedMethods("GET", "POST")
+                .allowedHeaders("*")
+                .allowCredentials(true)
+                .allowedOrigins("*");
+//                .allowedMethods("*")
     }
 
     @Override

@@ -32,8 +32,23 @@ public class UserController {
         return new Result(JwtUtil.getToken(user.getUsername()));
     }
 
+    /**
+     * @func 用于客户端检查token是否合法
+     * @author wangpeng
+     * @date 2018/8/27 16:58
+     */
+    @PostMapping("/checkToken")
+    public Result checkToken(@RequestBody String token) {
+        return new Result(JwtUtil.isTokenOk(token));
+    }
+
     @GetMapping("/success")
     public Result success() {
         return new Result("login success");
+    }
+
+    @GetMapping("/getEmail")
+    public Result getEmail() {
+        return new Result("jimo@qq.com");
     }
 }

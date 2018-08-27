@@ -17,7 +17,7 @@ public class JwtInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String authHeader = request.getHeader("Authorization");
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            throw new ServletException("invalid Authorization header");
+            throw new ServletException("invalid Authorization header,请重新登陆");
         }
         //取得token
         String token = authHeader.substring(7);
