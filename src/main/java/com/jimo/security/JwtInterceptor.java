@@ -15,12 +15,14 @@ public class JwtInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String authHeader = request.getHeader("Authorization");
-        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+        System.out.println("prehandle");
+        final String authorization = request.getParameter("Authorization");
+        /*String authHeader = request.getHeader("Authorization");*/
+        if (authorization == null || !authorization.startsWith("Bearer ")) {
             throw new ServletException("invalid Authorization header,请重新登陆");
         }
         //取得token
-        String token = authHeader.substring(7);
+        String token = authorization.substring(7);
         try {
             JwtUtil.checkToken(token);
             return true;

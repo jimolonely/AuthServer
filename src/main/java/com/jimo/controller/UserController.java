@@ -38,7 +38,7 @@ public class UserController {
      * @date 2018/8/27 16:58
      */
     @PostMapping("/checkToken")
-    public Result checkToken(@RequestBody String token) {
+    public Result checkToken(String token) {
         return new Result(JwtUtil.isTokenOk(token));
     }
 
